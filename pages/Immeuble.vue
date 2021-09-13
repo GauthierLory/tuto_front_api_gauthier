@@ -1,0 +1,3 @@
+<template>
+    <Immeuble/>
+</template>
