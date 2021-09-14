@@ -1,34 +1,77 @@
 <template>
   <v-list>
-        <v-list-item v-for="item in items" :key="item.text" link>
+        <v-list-item>
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <NuxtLink :to="`${item.link}`">{{ item.text }}</NuxtLink>
+              <NuxtLink to="/">Home</NuxtLink>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink to="/users">Compte</NuxtLink>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-office-building</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink to="/immeuble">Immeubles</NuxtLink>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-login</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink to="/login">Connexion</NuxtLink>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-account-plus</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink to="/register">Inscription</NuxtLink>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-account-plus</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink to="/logout">Deconnexion</NuxtLink>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
 </template>
 
-
-<style scoped>
-</style>
-{{ item.icon }}
 <script>
 export default {
-  data () {
-    return {
-      drawer: true,
-      items: [
-        { icon: 'mdi-home',link: '/' ,text: 'Home' },
-        { icon: 'mdi-account',link: '/users' ,text: 'Compte' },
-        { icon: 'mdi-office-building', link: '/immeuble', text: 'Immeuble' },
-        { icon: 'mdi-login', link:'/login', text: 'Connexion' },
-        { icon: 'mdi-account-plus', link:'/register', text: 'Inscription' },
-      ]
+  methods: {
+    async login() {
+      try {
+        await this.$auth.logout({ data: this.form})
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

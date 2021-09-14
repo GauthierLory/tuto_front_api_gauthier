@@ -37,7 +37,7 @@
             </tbody>
           </template>
         </v-simple-table>
-        <button @click="$fetch">Refresh</button>
+        <button @click="$fetch">Refresh    {{ user }} </button>
       </v-card>
     </v-col>
   </v-container>
@@ -47,13 +47,13 @@
   export default {
     data() {
       return { 
-        immeubles: []
+        immeubles: [],
       }
     },
     async fetch() {
       this.immeubles = await fetch(
         'http://127.0.0.1:8000/api/immeubles'
       ).then(res => res.json())
-    }
+    },
   }
 </script>

@@ -23,6 +23,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    './plugins/mixins/user',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,19 +50,28 @@ export default {
           // type: 'Bearer'
         },
         user: {
-          property: 'user',
+          property: '',
           // autoFetch: true
         },
         endpoints: {
-          login: { url: 'http://127.0.0.1:8000/api/auth/login', method: 'post' },
-          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'post' },
-          // user: { url: 'http://127.0.0.1:8000/api/auth/user', method: 'get' }
+          login: { url: 'http://127.0.0.1:8000/api/auth/login', method: 'post'},
+          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'get' },
+          user: { url: 'http://127.0.0.1:8000/api/me', method: 'get' }
         }
       }
     }
   },
+  redirect : {
+      login: '/auth/login',
+      home: '/',
+      logout: '/auth/logout'
+    },
 
   axios: {
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
