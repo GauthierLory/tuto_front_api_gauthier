@@ -37,7 +37,30 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: 'http://127.0.0.1:8000/api/auth/login', method: 'post' },
+          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'post' },
+          // user: { url: 'http://127.0.0.1:8000/api/auth/user', method: 'get' }
+        }
+      }
+    }
+  },
+
   axios: {
   },
 

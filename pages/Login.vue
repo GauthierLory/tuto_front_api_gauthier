@@ -8,6 +8,7 @@
             <v-layout column>
               <v-flex>
                 <v-text-field
+                v-model="form.email"
                   name="email"
                   label="Email"
                   id="email"
@@ -17,6 +18,7 @@
               </v-flex>
               <v-flex>
                 <v-text-field
+                v-model="form.password"
                   name="password"
                   label="Password"
                   id="password"
@@ -34,3 +36,25 @@
     </v-col>
   </v-container>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    async login() {
+      try {
+        await this.$auth.login({ data: this.form})
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
+}
+</script>
