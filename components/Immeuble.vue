@@ -37,7 +37,7 @@
             </tbody>
           </template>
         </v-simple-table>
-        <button @click="$fetch">Refresh    {{ user }} </button>
+        <button @click="$fetch">Refresh</button>
       </v-card>
     </v-col>
   </v-container>
