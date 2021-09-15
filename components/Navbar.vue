@@ -3,16 +3,6 @@
         <div v-if="authenticated">
         <v-list-item>
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              <NuxtLink to="/">Home</NuxtLink>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-action>
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>
@@ -33,11 +23,11 @@
         </v-list-item>
             <v-list-item>
             <v-list-item-action>
-              <v-icon>mdi-account-plus</v-icon>
+              <v-icon>mdi-account-minus</v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <NuxtLink to="/logout">Deconnexion</NuxtLink>
+                <NuxtLink :to="logout">Deconnexion</NuxtLink>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -69,15 +59,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters(['authenticated', 'user'])
+  },
   methods: {
-    async login() {
-      try {
-        await this.$auth.logout({ data: this.form})
-      } catch (e) {
-        console.log(e)
-      }
-    }
+    async logout() {
+      await this.$auth.logout();
+    },
   }
 }
 </script>

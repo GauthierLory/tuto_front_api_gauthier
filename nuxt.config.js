@@ -23,11 +23,14 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    './plugins/mixins/user',
+    //'./plugins/mixins/user',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+  eslint: {
+    fix: true
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -55,7 +58,7 @@ export default {
         },
         endpoints: {
           login: { url: 'http://127.0.0.1:8000/api/auth/login', method: 'post'},
-          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'get' },
+          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'post' },
           user: { url: 'http://127.0.0.1:8000/api/me', method: 'get' }
         }
       }
@@ -63,7 +66,6 @@ export default {
   },
   redirect : {
       login: '/auth/login',
-      home: '/',
       logout: '/auth/logout'
     },
 
@@ -71,7 +73,7 @@ export default {
   },
 
   router: {
-    middleware: ['auth']
+    //middleware: ['auth']
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
