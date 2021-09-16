@@ -7,6 +7,12 @@
         <v-card-title>Connexion</v-card-title>
         <v-card-text>
           <form method="post" @submit.prevent="register">
+              <p class="text-md-center" v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                  <li style="list-style: none" v-for="error in errors">{{ error }}</li>
+                </ul>
+              </p>
             <v-row>
               <v-flex>
                 <v-text-field class="pa-2"
@@ -14,7 +20,7 @@
                     label="pseudo"
                     id="pseudo"
                     type="pseudo"
-                    required
+                    
                 ></v-text-field>
               </v-flex>
               <v-flex>
@@ -121,16 +127,19 @@ data() {
           zipcode:'',
           email: '',
           password: ''
-        }
+        },
+      errors: ''
     }
   },
   methods: {
     async register() {
+      this.errors = [];
       try {
         await this.$axios.post('http://127.0.0.1:8000/api/auth/register', this.user)
-      } catch (e) {
-        console.log(e)
-      }
+      } catch (error) {
+            let errorResponse = error.response.data.errors
+            this.errors.push(errorResponse)
+        }
     }
   }
 };
