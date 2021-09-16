@@ -7,7 +7,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <NuxtLink to="/user">{{ user.pseudo }} </NuxtLink>
+              <NuxtLink :to="`/users/${user.id}`">{{ user.pseudo }} </NuxtLink>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -17,7 +17,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <NuxtLink to="/immeuble">Immeubles</NuxtLink>
+              <NuxtLink :to="`/immeubles/${user.id}`">Immeubles</NuxtLink>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -27,7 +27,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <NuxtLink :to="logout">Deconnexion</NuxtLink>
+                <NuxtLink to="/logout">Deconnexion</NuxtLink>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>

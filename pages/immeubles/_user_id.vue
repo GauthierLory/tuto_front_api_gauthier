@@ -24,20 +24,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="immeuble in immeubles"
-                :key="immeuble.id"
-              >
+              <tr v-for="immeuble in immeubles" :key="immeuble.id">
                 <td>{{ immeuble.name }}</td>
                 <td>{{ immeuble.address }}</td>
                 <td>{{ immeuble.code_im }}</td>
                 <td>{{ immeuble.code_soc }}</td>
-                <td>{{ immeuble.id }}</td>
+                <td><NuxtLink :to="`/immeubles/details/${immeuble.id}`">{{ immeuble.id }}</NuxtLink></td>
               </tr>
             </tbody>
           </template>
         </v-simple-table>
-        <button @click="$fetch">Refresh</button>
       </v-card>
     </v-col>
   </v-container>
@@ -50,10 +46,10 @@
         immeubles: [],
       }
     },
-    async fetch() {
-      this.immeubles = await fetch(
-        'http://127.0.0.1:8000/api/immeubles'
-      ).then(res => res.json())
-    },
+    mounted() {
+      this.$axios.get("http://127.0.0.1:8000/api/immeubles/" + this.$auth.user.id)
+      .then(res => (this.immeubles = res.data))
+},
+  
   }
 </script>
