@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-col md="6" offset-md="3">
+    <v-col lg="6" offset-lg="3">
       <v-card class="mx-auto">
         <v-simple-table>
           <template v-slot:default>

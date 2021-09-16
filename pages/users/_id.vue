@@ -1,92 +1,98 @@
 <template>
   <v-container fluid>
-    <v-col md="6" offset-md="3">
-      <v-card v-if='user' class="mx-auto">
-        <div class="d-flex flex-column ma-6">
-          <h1 class="text-md-center" >Edit user {{ user.pseudo }}</h1>
-          <form method="patch" @submit.prevent="update"> 
-              <v-layout column>
-                <v-flex>
-                <v-text-field
+  <v-col lg="5" md="6" offset-lg="3" offset-md="3">
+    <v-card outlined class="mx-auto">
+      <v-card>
+        <v-card-title>Edit {{ user.pseudo }}</v-card-title>
+        <v-card-text>
+          <form method="post" @submit.prevent="update">
+            <v-row>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.pseudo"
                     label="pseudo"
                     id="pseudo"
                     type="pseudo"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+              <v-flex>
+                <v-text-field class="pa-2"
                     label="bio"
                     id="bio"
                     type="bio"
                     v-model="user.bio"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+            </v-row>
+            <v-row>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.address"
                     label="address"
                     id="address"
                     type="address"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.phone"
                     label="phone"
                     id="phone"
                     type="phone"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+            </v-row>
+            <v-row>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.city"
                     label="city"
                     id="city"
                     type="city"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.country"
                     label="country"
                     id="country"
                     type="country"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
+              </v-flex>
+            </v-row>
+            <v-row>
+              <v-flex>
+                <v-text-field class="pa-2"
                     v-model="user.zipcode"
                     label="zipcode"
                     id="zipcode"
                     type="zipcode"
                     required
                 ></v-text-field>
-                </v-flex>
-                <v-flex>
-                <v-text-field
-                    v-model="user.email"
-                    label="Email"
-                    id="email"
-                    type="email"
-                    required
-                ></v-text-field>
-                </v-flex>
-            </v-layout>
-              <v-flex class="text-xs-center">
-                <v-btn color="primary" type="submit">Modification</v-btn>
               </v-flex>
+            <v-flex>
+              <v-text-field class="pa-2"
+                  v-model="user.email"
+                  label="Email"
+                  id="email"
+                  type="email"
+                  required
+                ></v-text-field>
+              </v-flex>
+            </v-row>
+            <v-btn color="primary" type="submit">Update</v-btn>
           </form>
-        </div>
+        </v-card-text>
       </v-card>
-    </v-col>
-  </v-container>
+    </v-card>
+  </v-col>
+</v-container>
 </template>
 
 <script>
