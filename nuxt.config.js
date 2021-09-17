@@ -49,8 +49,8 @@ export default {
         token: {
           property: 'token',
           global: true,
-          // required: true,
-          // type: 'Bearer'
+          required: true,
+          type: 'Bearer'
         },
         user: {
           property: '',
@@ -58,22 +58,22 @@ export default {
         },
         endpoints: {
           login: { url: 'http://127.0.0.1:8000/api/auth/login', method: 'post'},
-          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'post' },
+          logout: { url: 'http://127.0.0.1:8000/api/auth/logout', method: 'get' },
           user: { url: 'http://127.0.0.1:8000/api/me', method: 'get' }
         }
       }
     }
   },
   redirect : {
-      login: '/auth/login',
-      logout: '/auth/logout'
+      login: 'http://127.0.0.1:8000/api/immeubles',
+      logout: '/auth/login'
     },
 
   axios: {
   },
 
   router: {
-    //middleware: ['auth']
+    middleware: ['auth']
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
