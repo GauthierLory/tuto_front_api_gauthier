@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
-import mutations from './mutations'
-import getters from './getters'
-import state from "./state";
+import immeubles from "./immeubles"
+import users from "./users"
 
 Vue.use(Vuex);
 
 new Vuex.Store({
-    state,
-    mutations,
-    getters,
-    actions
+    module: {
+        immeubles,
+        users
+    }
 })

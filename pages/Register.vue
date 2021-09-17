@@ -4,7 +4,7 @@
   <v-col lg="5" md="6" offset-lg="3" offset-md="3">
     <v-card outlined class="mx-auto">
       <v-card>
-        <v-card-title>Connexion</v-card-title>
+        <v-card-title>Inscription</v-card-title>
         <v-card-text>
           <form method="post" @submit.prevent="register">
               <p class="text-md-center" v-if="errors.length">
@@ -102,7 +102,7 @@
                   required
               ></v-text-field>
             </v-flex>
-            <v-btn color="primary" type="submit">Register</v-btn>
+            <v-btn color="primary" type="submit">Inscription</v-btn>
           </form>
         </v-card-text>
       </v-card>
@@ -131,6 +131,8 @@ data() {
       errors: ''
     }
   },
+
+  auth: false,
   methods: {
     async register() {
       this.errors = [];

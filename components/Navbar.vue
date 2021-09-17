@@ -63,7 +63,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['authenticated', 'user'])
+    authenticated() {
+      return this.$store.state.auth.loggedIn;
+    },
+    user() {
+      return this.$store.state.auth.user;
+    }
   },
   methods: {
     async logout() {

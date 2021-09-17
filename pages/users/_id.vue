@@ -3,7 +3,7 @@
   <v-col lg="5" md="6" offset-lg="3" offset-md="3">
     <v-card outlined class="mx-auto">
       <v-card>
-        <v-card-title>Edit {{ user.pseudo }}</v-card-title>
+        <v-card-title>Modifier profile {{ user.pseudo }}</v-card-title>
         <v-card-text>
           <form method="post" @submit.prevent="update">
             <v-row>
@@ -86,7 +86,7 @@
                 ></v-text-field>
               </v-flex>
             </v-row>
-            <v-btn color="primary" type="submit">Update</v-btn>
+            <v-btn color="primary" type="submit">Modifier</v-btn>
           </form>
         </v-card-text>
       </v-card>

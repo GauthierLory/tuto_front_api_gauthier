@@ -47,12 +47,10 @@ import {mapGetters} from 'vuex'
 export default {
   name: "Immeubles",
   mounted() {
-    this.$store.dispatch('fetchImmeubles')
+    this.$store.dispatch('immeubles/fetchImmeubles')
   },
   computed: {
-    ...mapGetters([
-      'immeubles'
-    ])
+    ...mapGetters('immeubles', ['immeubles'])
   }
 }
 </script>
