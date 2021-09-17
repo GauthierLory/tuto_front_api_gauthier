@@ -40,16 +40,19 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return { 
-        immeubles: [],
-      }
-    },
-    mounted() {
-      this.$axios.get("http://127.0.0.1:8000/api/immeubles/" + this.$auth.user.id)
-      .then(res => (this.immeubles = res.data))
-},
-  
+
+
+import {mapGetters} from 'vuex'
+
+export default {
+  name: "Immeubles",
+  mounted() {
+    this.$store.dispatch('fetchImmeubles')
+  },
+  computed: {
+    ...mapGetters([
+      'immeubles'
+    ])
   }
+}
 </script>
