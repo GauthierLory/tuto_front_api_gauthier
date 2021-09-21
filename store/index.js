@@ -1,13 +1,12 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import immeubles from "./immeubles"
 import users from "./users"
+import accounts from "./accounts"
 
-Vue.use(Vuex);
-
-new Vuex.Store({
+export const store = new Vuex.Store({
     module: {
         immeubles,
-        users
+        users,
+        accounts
     }
 })
