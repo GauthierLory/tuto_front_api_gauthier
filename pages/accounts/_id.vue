@@ -1,7 +1,7 @@
 <template>
 <v-container fluid>
   <v-col lg="5" md="6" offset-lg="3" offset-md="3">
-    <div v-for="account in accounts.data">
+    <div v-for="account in accounts.data" :key=account.id>
       <v-card elevation="3" outlined shaped tile class="pa-6 ma-2">
         <v-card-title>
           Information propriétaire
@@ -66,7 +66,7 @@ export default {
       }
     },
     created() {
-      this.$axios.get("http://127.0.0.1:8000/api/account/" + this.$route.params.id)
+      this.$axios.get("http://127.0.0.1:8000/api/accounts/" + this.$route.params.id)
       .then(res => (this.accounts = res.data))
       
     },
