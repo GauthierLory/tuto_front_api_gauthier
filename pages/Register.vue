@@ -6,7 +6,7 @@
       <v-card>
         <v-card-title>Inscription</v-card-title>
         <v-card-text>
-          <form method="post" @submit.prevent="register">
+          <form method="post" @submit.prevent="createUser(user)">
               <p class="text-md-center" v-if="errors.length">
                 <b>Please correct the following error(s):</b>
                 <ul>
@@ -134,15 +134,10 @@ data() {
 
   auth: false,
   methods: {
-    async register() {
-      this.errors = [];
-      try {
-        await this.$axios.post('http://127.0.0.1:8000/api/auth/register', this.user)
-      } catch (error) {
-            let errorResponse = error.response.data.errors
-            this.errors.push(errorResponse)
-        }
-    }
-  }
+      createUser(user) {
+          this.$store.dispatch('users/createUser', user)
+      }
+  },
+
 };
 </script>

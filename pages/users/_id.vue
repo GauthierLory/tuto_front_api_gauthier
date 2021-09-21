@@ -3,7 +3,7 @@
   <v-col lg="5" md="6" offset-lg="3" offset-md="3">
     <v-card outlined class="mx-auto">
       <v-card>
-        <v-card-title>Modifier profile {{ user.pseudo }}</v-card-title>
+        <v-card-title>Modifier {{ user.pseudo }}</v-card-title>
         <v-card-text>
           <form method="post" @submit.prevent="update">
             <v-row>
@@ -86,7 +86,7 @@
                 ></v-text-field>
               </v-flex>
             </v-row>
-            <v-btn color="primary" type="submit">Modifier</v-btn>
+            <v-btn color="primary" type="submit">Update</v-btn>
           </form>
         </v-card-text>
       </v-card>
@@ -97,20 +97,12 @@
 
 <script>
 
+import {mapGetters} from 'vuex'
 export default {
-  data() {
-      return {
-          user: {
-
-          }
-      }
-    },
-
-created() {
-      this.$axios.get("http://127.0.0.1:8000/api/me").then(res => {
-      this.user = res.data
-    })
-},
+  
+  mounted() {
+    this.$store.dispatch('users/fetchUser')
+  },
 
   methods: {
     async update() {
@@ -120,6 +112,10 @@ created() {
         console.log(e)
       }
     }
+  },
+
+  computed: {
+    ...mapGetters('users', ['user'])
   }
 };
 </script>

@@ -45,7 +45,6 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  name: "Immeubles",
   mounted() {
     this.$store.dispatch('immeubles/fetchImmeubles')
   },

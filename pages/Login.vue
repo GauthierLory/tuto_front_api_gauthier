@@ -59,7 +59,6 @@ export default {
       this.errors = [];
           try {
             await this.$auth.loginWith('local',{ data: this.form})
-            console.log(this.$auth.user);
           } catch (error) {
             let errorResponse = error.response.data.errors.email
              this.errors.push(errorResponse)
