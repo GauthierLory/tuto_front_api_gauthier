@@ -1,4 +1,5 @@
 <template>
+
 <v-container fluid>
   <v-col lg="5" md="6" offset-lg="3" offset-md="3">
     <div v-for="account in accounts.data" :key=account.id>
@@ -52,35 +53,19 @@
     </div>
   </v-col>
 </v-container>
-
-
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
     data() {
       return { 
         accounts: [],
       }
     },
-    created() {
-      this.$axios.get("http://127.0.0.1:8000/api/accounts/" + this.$route.params.id)
-      .then(res => (this.accounts = res.data))
-    },
     mounted() {
       if (localStorage.getItem("accounts")){
         this.accounts = JSON.parse(localStorage.getItem("accounts"))
       }
     },
-    watch: {
-      accounts: {
-        handler() {
-          localStorage.setItem('accounts',JSON.stringify(this.accounts))
-        },
-        deep: true
-      }
-    }
-  }
+}
 </script>

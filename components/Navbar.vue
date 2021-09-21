@@ -3,13 +3,11 @@
         <div v-if="authenticated">
         <v-list-item>
           <v-list-item-action>
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              <NuxtLink :to="`/users/${user.id}`">{{ user.pseudo }} </NuxtLink>
-            </v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>
+            <NuxtLink to="/">Home Page</NuxtLink>
+          </v-list-item-title>
         </v-list-item>
         <v-list-item>
           <v-list-item-action>
@@ -17,18 +15,9 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <NuxtLink :to="`/users/immeubles/${user.id}`">Mes Immeubles</NuxtLink>
+              <NuxtLink :to="`/users/immeubles/${user.id}`" >Mes Immeubles</NuxtLink>
             </v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-item v-for="account in accounts" :key="account.id">
-          <v-list-item-action>
-          </v-list-item-action>
-            <v-list-item-content> 
-              <v-list-item-title>
-                  <NuxtLink :to="`/accounts/${account.immeuble_id}`">{{ account.name }} #{{ account.id }}</NuxtLink>
-              </v-list-item-title>
-            </v-list-item-content>
         </v-list-item>
             <v-list-item>
             <v-list-item-action>
@@ -36,7 +25,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <a class="navbar-item"  @click="logout">Logout</a>
+                <a class="navbar-item" @click="logout">Logout</a>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -68,13 +57,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-
-  mounted() {
-    this.$store.dispatch('accounts/fetchAccounts')
-  },
   computed: {
     authenticated() {
       return this.$store.state.auth.loggedIn;
@@ -82,7 +65,6 @@ export default {
     user() {
       return this.$store.state.auth.user;
     },
-    ...mapGetters('accounts', ['accounts'])
   },
   methods: {
     async logout() {
