@@ -62,14 +62,13 @@ export default {
           user: { url: 'http://127.0.0.1:8000/api/me', method: 'get' }
         }
       }
-    }
-  },
-  redirect : {
-      login: 'http://127.0.0.1:8000/api/immeubles',
-      logout: '/auth/login'
     },
 
-  axios: {
+  redirect : {
+    login: '/users/:id',
+    register: '/login',
+    logout: '/login',
+    },
   },
 
   router: {
@@ -78,8 +77,16 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ["~/assets/variables.scss"],
-    optionsPath: "./vuetify.options.js"
+    theme: {
+      themes: {
+        light: {
+          primary: '#3f51b5',
+        },
+        dark: {
+          primary: '#FF5733',
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
